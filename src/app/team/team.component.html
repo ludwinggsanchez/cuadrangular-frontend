@@ -1,0 +1,14 @@
+<div class="container-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="team.name" placeholder="Escriba el nombre del equipo">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>url de la imagen</mat-label>
+        <input matInput [(ngModel)]="team.image"  placeholder="pegue aqui la url de la imagen">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+      <button mat-button color="primary" (click)="save()">Guardar</button>
+</div>
