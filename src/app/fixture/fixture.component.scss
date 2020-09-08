@@ -1,0 +1,9 @@
+.container-fixture {
+    min-width: 500px;
+}
+
+.container-flex, flex-item {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}

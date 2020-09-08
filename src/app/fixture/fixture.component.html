@@ -1,1 +1,32 @@
-<p>fixture works!</p>
+<mat-card>
+    <div class="container-fixture">
+        <mat-grid-list cols="2" rowHeight="300">
+            <mat-grid-tile>
+                <div class="flex-item">
+                    <app-team [team]="fixture.team1"></app-team>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Marcador</mat-label>
+                        <input matInput [(ngModel)]="fixture.score1" placeholder="Marcador">
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="flex-item">
+                    <app-team [team]="fixture.team2"></app-team>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Marcador</mat-label>
+                        <input matInput [(ngModel)]="fixture.score2" placeholder="Marcador">
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <mat-grid-list *ngIf="edited" cols="1" rowHeight="50px">
+            <mat-grid-tile>
+                <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon"
+                    (click)="saveResult()">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</mat-card>

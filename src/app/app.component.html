@@ -5,4 +5,24 @@
     <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
-<app-team></app-team>
+<app-teamlist [enableList]="showDataTable"></app-teamlist>
+
+<mat-grid-list cols="2" >
+  <div *ngFor="let fixture of fixtureList">
+    <mat-grid-tile>
+      <app-fixture [fixture]="fixture"></app-fixture>
+    </mat-grid-tile>
+
+  </div>
+</mat-grid-list>
+
+<mat-grid-list *ngIf="!showDataTable" cols="3" rowHeight="50px">
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+
+      <button mat-button color="primary" (click)="newCuadrangular()">
+          Nuevo Cuadrangular
+      </button>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>

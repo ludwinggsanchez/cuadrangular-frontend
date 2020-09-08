@@ -1,0 +1,72 @@
+<div *ngIf="enableList">
+    <div class="container-form">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="team.name" placeholder="Escriba el nombre del equipo">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>url de la imagen</mat-label>
+            <input matInput [(ngModel)]="team.image" placeholder="pegue aqui la url de la imagen">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon" (click)="save()">
+            <mat-icon>save</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="clearForm()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-grid-tile *ngFor="let team of teamlist">
+            <app-team [team]="team" [enableButtons]="true" (actionEvent)="teamEvents($event)"></app-team>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list *ngIf="enabledGenCuadrangular" cols="3" rowHeight="50px">
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile>
+
+            <button mat-button color="primary" (click)="genCuadrangular()">
+                generar cuadrangular
+            </button>
+        </mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+    </mat-grid-list>
+</div>
+<div *ngIf="!enableList">
+
+    <table mat-table [dataSource]="tablePositions" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="points">
+            <th mat-header-cell *matHeaderCellDef> Points </th>
+            <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="goals">
+            <th mat-header-cell *matHeaderCellDef> Goals </th>
+            <td mat-cell *matCellDef="let element"> {{element.goals}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
